@@ -1,0 +1,8 @@
+[package]
+name = "ferrodrome-dsp"
+description = "DSP engine for Ferrodrome FD-1: machine models, per-track reverb/delay, sequencer, VARIANCE and MUTATE"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]

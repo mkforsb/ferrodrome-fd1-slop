@@ -1,0 +1,8 @@
+[application]
+name = "ferrodrome"
+
+[web.app]
+title = "Ferrodrome FD-1 · Industrial Machine Hall Synthesizer"
+
+[web.watcher]
+watch_path = ["src", "assets", "../dsp/src", "../worklet/src"]

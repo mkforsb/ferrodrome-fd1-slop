@@ -1,0 +1,57 @@
+[package]
+name = "ferrodrome"
+description = "Ferrodrome FD-1: industrial machine hall synthesizer and sequencer (Dioxus web + Linux desktop)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+ferrodrome-dsp = { path = "../dsp" }
+dioxus = { version = "0.7.10" }
+futures-channel = "0.3"
+futures-util = { version = "0.3", default-features = false }
+
+# --- web (WebAudio AudioWorklet) ---
+wasm-bindgen = { version = "0.2", optional = true }
+wasm-bindgen-futures = { version = "0.4", optional = true }
+js-sys = { version = "0.3", optional = true }
+web-sys = { version = "0.3", optional = true, features = [
+    "AudioContext",
+    "AudioContextOptions",
+    "AudioContextState",
+    "AudioDestinationNode",
+    "AudioNode",
+    "AudioWorklet",
+    "AudioWorkletNode",
+    "AudioWorkletNodeOptions",
+    "BaseAudioContext",
+    "Blob",
+    "Document",
+    "Element",
+    "BlobPropertyBag",
+    "MessageEvent",
+    "MessagePort",
+    "Storage",
+    "Url",
+    "Window",
+    "Worklet",
+] }
+
+# --- desktop (PulseAudio) ---
+libpulse-binding = { version = "2.30", optional = true }
+libpulse-simple-binding = { version = "2.29", optional = true }
+
+[features]
+default = []
+web = [
+    "dioxus/web",
+    "dep:wasm-bindgen",
+    "dep:wasm-bindgen-futures",
+    "dep:js-sys",
+    "dep:web-sys",
+]
+desktop = [
+    "dioxus/desktop",
+    "dep:libpulse-binding",
+    "dep:libpulse-simple-binding",
+]
